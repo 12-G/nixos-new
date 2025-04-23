@@ -1,0 +1,9 @@
+keys:
+  - &thinkbook_ethan age185y5endghghw0eksdj97yntqwecaldz00xcfy8y8mgs6fnupyemsqf03tg
+  - &server_thinkbook age153weu82cvhsgxwzm6l8k8d5zl0npzanlne9e22uewfw5tmlmffts5r0xea
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+          - *thinkbook_ethan
+          - *server_thinkbook

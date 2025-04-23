@@ -1,0 +1,18 @@
+patch: # 用打补丁的方式修改配置
+  switches:
+  # reset 的值表示设置 上一行的 states，0表示选中第一个，1表示选中第二个
+    - name: ascii_mode
+      states: [中, A]
+      reset: 1 # 默认英文输入开始
+    # - name: ascii_punct # 中英标点
+    #   states: [¥, $]
+    #   reset: 0 
+    - name: traditionalization
+      states: [简, 繁]
+      reset: 0
+    - name: emoji
+      states: [💀, 😄]
+      reset: 1 # 默认有表情包
+    # - name: full_shape
+    #   states: [半角, 全角]
+    #   reset: 0
