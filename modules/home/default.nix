@@ -8,9 +8,10 @@
 }: let
   inherit (flake) vars;
   inherit (vars) pc;
+  isNotWSL = osConfig.networking.hostName != "${pc.w}";
 in {
   imports = with builtins;
     map (fn: ./${fn}) (filter (fn: fn != "default.nix") (attrNames (readDir ./.)));
   home.stateVersion = "24.11";
-  programs.hyprland-utils.enable = osConfig.networking.hostName != "${pc.w}";
+  programs.hyprland-utils.enable = isNotWSL;
 }
