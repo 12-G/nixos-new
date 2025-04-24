@@ -12,7 +12,7 @@
 in {
   imports = [
     ./hardware-configuration.nix
-    ./disko.nix
+    # ./disko.nix
     ./boot.nix
     ./sys_config.nix
   ];
