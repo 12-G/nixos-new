@@ -12,10 +12,11 @@
 in {
   imports = [
     # ./disko.nix
-    ./boot.nix
     ./sys_config.nix
+    ./wsl.nix
   ];
 
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   services.sddm.enable = lib.mkForce false;
   services.inputsMethod.enable = lib.mkForce false;
 
