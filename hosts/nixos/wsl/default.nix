@@ -11,7 +11,6 @@
   inherit (flake) vars;
 in {
   imports = [
-    ./hardware-configuration.nix
     # ./disko.nix
     ./boot.nix
     ./sys_config.nix
