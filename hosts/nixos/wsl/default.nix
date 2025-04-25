@@ -11,7 +11,6 @@
   inherit (flake) vars;
 in {
   imports = [
-    # ./disko.nix
     ./sys_config.nix
     ./wsl.nix
   ];
@@ -29,7 +28,7 @@ in {
   ];
   users.users.${vars.username} = {
     isNormalUser = true;
-    hashedPasswordFile = config.sops.secrets.ethan-password.path;
+    hashedPassword = null;
     extraGroups = [
       "wheel"
       "networkmanager"
