@@ -9,6 +9,7 @@
   inherit (vars) pc;
 in {
   networking.hostName = lib.mkForce "${pc.w}";
+  programs.dconf.enable = true;
 
   # Set bluetooth
   hardware.bluetooth.enable = lib.mkForce false;
