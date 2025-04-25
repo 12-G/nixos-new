@@ -13,7 +13,6 @@ in {
     ./input.nix
     ./sddm.nix
     ./theme.nix
-    ./secrets.nix
     ./sys_config.nix
   ];
 
