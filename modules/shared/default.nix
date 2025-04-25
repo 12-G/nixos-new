@@ -2,10 +2,12 @@
   flake,
   pkgs,
   lib,
+  config,
   ...
 }: let
   inherit (flake) vars;
   inherit (vars) platform;
+  isNotWSL = config.networking.hostName != "${vars.pc.w}";
 in {
   imports = [
     ./impermanence.nix
@@ -19,5 +21,5 @@ in {
   services.catppuccin.enable = lib.mkDefault true;
   services.sddm.enable = lib.mkDefault true;
   services.inputsMethod.enable = lib.mkDefault true;
-  programs.impermanence.enable = pkgs.system == "${platform.x86}";
+  programs.impermanence.enable = isNotWSL;
 }
