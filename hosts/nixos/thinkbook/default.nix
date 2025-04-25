@@ -14,6 +14,7 @@ in {
     ./desktop
     ./hardware-configuration.nix
     ./disko.nix
+    ./secrets.nix
     ./boot.nix
     ./utils.nix
   ];
