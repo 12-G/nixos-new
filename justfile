@@ -68,8 +68,14 @@ pack:
 thinkbook:
   # switch to a new generation for thinkbook
   sudo nixos-rebuild switch --flake .#thinkbook
+wsl:
+  sudo nixos-rebuild switch --flake .#wsl
 
 # check the home-manager service
 [group('home')]
 home:
   journalctl --unit home-manager-ethan.serivce
+
+[group('ssh')]
+ssh:
+  ssh-keygen -t ed25519 -C "1240121425@qq.com"
