@@ -120,6 +120,9 @@ in {
       lib = {
         inherit specialArgsFor;
 
+        scanFile = with builtins;
+          map (fn: ./${fn}) (filter (fn: fn != "default.nix") (attrNames (readDir ./.)));
+
         mkLinuxSystem = {
           home-manager ? true,
           wsl ? false,
