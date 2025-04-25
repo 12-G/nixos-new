@@ -6,44 +6,51 @@
   ...
 }: let
   inherit (flake) inputs;
+  cfg = config.packages.desktop;
 in {
-  # Nix packages to install to $HOME
-  #
-  # Search for packages here: https://search.nixos.org/packages
-  home.packages = with pkgs; [
-    # wayland tools
-    wl-clipboard
-    rofi-wayland
-    hyprpolkitagent
-    hyprland-qt-support
-    libsForQt5.qt5.qtwayland
-    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+  options.packages.desktop = {
+    enable = lib.mkEnableOption "install desktop packages";
+  };
 
-    # sound and light
-    brightnessctl
-    alsa-utils
-    pavucontrol
-    bluetui
+  config = lib.mkIf cfg.enable {
+    # Nix packages to install to $HOME
+    #
+    # Search for packages here: https://search.nixos.org/packages
+    home.packages = with pkgs; [
+      # wayland tools
+      wl-clipboard
+      rofi-wayland
+      hyprpolkitagent
+      hyprland-qt-support
+      libsForQt5.qt5.qtwayland
+      inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
 
-    # utils
-    ntfs3g
-    kdePackages.okular
+      # sound and light
+      brightnessctl
+      alsa-utils
+      pavucontrol
+      bluetui
 
-    # daily app
-    wpsoffice-cn
-    typora
-    nemo
-    telegram-desktop
-    (element-desktop.override {
-      commandLineArgs = [
-        "--enable-features=UseOzonePlatform"
-        "--ozone-platform=wayland"
-        "--enable-wayland-ime"
-      ];
-    })
-    vivaldi
-    termius
-    qq
-    wechat-uos
-  ];
+      # utils
+      ntfs3g
+      kdePackages.okular
+
+      # daily app
+      wpsoffice-cn
+      typora
+      nemo
+      telegram-desktop
+      (element-desktop.override {
+        commandLineArgs = [
+          "--enable-features=UseOzonePlatform"
+          "--ozone-platform=wayland"
+          "--enable-wayland-ime"
+        ];
+      })
+      vivaldi
+      termius
+      qq
+      wechat-uos
+    ];
+  };
 }

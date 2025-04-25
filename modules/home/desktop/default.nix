@@ -10,6 +10,7 @@ in {
   imports = [
     ./hyprland/hyprland.nix
     ./packages.nix
+    ./hyprland/hyprlock.nix
   ];
   home.file.".config/hypr/hyprlock.png" = {
     enable = true;
