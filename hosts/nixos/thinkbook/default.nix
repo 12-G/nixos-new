@@ -26,6 +26,8 @@ in {
     #   config._module.args = {inherit isWSL;};
     # }
   ];
+
+  users.users.root.hashedPasswordFile = config.sops.secrets.root-password.path;
   users.users.${vars.username} = {
     isNormalUser = true;
     hashedPasswordFile = config.sops.secrets.ethan-password.path;
