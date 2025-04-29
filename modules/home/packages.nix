@@ -63,7 +63,12 @@ in {
     };
     jq.enable = true;
     # Install btop https://github.com/aristocratos/btop
-    btop.enable = true;
+    btop = {
+      enable = true;
+      settings = {
+        vim_keys = true;
+      };
+    };
     # File manager
     yazi = {
       enable = true;
