@@ -9,6 +9,7 @@ in {
     # Unix tools
     sd
     tree
+    pstree
 
     # archive
     zip
