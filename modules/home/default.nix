@@ -4,6 +4,7 @@
 {
   flake,
   osConfig,
+  lib,
   ...
 }: let
   inherit (flake) vars;
@@ -11,7 +12,13 @@
   isNotWSL = osConfig.networking.hostName != "${pc.w}";
 in {
   imports = with builtins;
-    map (fn: ./${fn}) (filter (fn: fn != "default.nix") (attrNames (readDir ./.)));
+    map (fn: ./${fn}) (filter (fn: fn != "default.nix") (attrNames (readDir ./.)))
+    ++ lib.optionals isNotWSL [
+      ./desktop/xdg.nix
+      ./desktop/hyprland/waybar.nix
+      ./desktop/hyprland/wlogout.nix
+      ./desktop/hyprland/utils.nix
+    ];
 
   home.stateVersion = "24.11";
   programs.hyprland-utils.enable = isNotWSL;

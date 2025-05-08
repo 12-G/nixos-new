@@ -4,13 +4,6 @@ in {
   imports = [
     inputs.catppuccin.homeManagerModules.catppuccin
   ];
-  home.pointerCursor = {
-    enable = true;
-    size = 24;
-    gtk.enable = true;
-    hyprcursor.enable = true;
-    hyprcursor.size = 24;
-  };
   gtk = {
     enable = true;
   };

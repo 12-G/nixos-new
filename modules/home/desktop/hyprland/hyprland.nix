@@ -8,11 +8,17 @@
   inherit (flake) inputs;
   cfg = config.programs.hyprland-utils;
 in {
-  imports = [./hyprlock.nix];
   options.programs.hyprland-utils = {
     enable = lib.mkEnableOption "enable Hyprland config";
   };
   config = lib.mkIf cfg.enable {
+    home.pointerCursor = {
+      enable = true;
+      size = 24;
+      gtk.enable = true;
+      hyprcursor.enable = true;
+      hyprcursor.size = 24;
+    };
     wayland.windowManager.hyprland = {
       enable = true;
       package = null;
