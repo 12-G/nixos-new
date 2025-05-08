@@ -34,6 +34,7 @@
   in {
     flake = {
       darwinConfigurations = forAllNixFiles "${self}/hosts/darwin" (
+        # auto pass the file or directory to the mkLinuxSystem function
         fn:
           self.lib.mkMacosSystem {
             # home-manager = true;
@@ -43,6 +44,7 @@
       );
 
       nixosConfigurations = forAllNixFiles "${self}/hosts/nixos" (
+        # auto pass the file or directory to the mkLinuxSystem function
         fn:
           self.lib.mkLinuxSystem {
             # home-manager = true;
