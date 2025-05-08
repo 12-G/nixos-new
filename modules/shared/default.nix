@@ -1,13 +1,11 @@
 {
   flake,
-  pkgs,
   lib,
-  config,
+  isNotWSL,
   ...
 }: let
   inherit (flake) vars;
   inherit (vars) platform;
-  isNotWSL = config.networking.hostName != "${vars.pc.w}";
 in {
   imports = [
     ./impermanence.nix

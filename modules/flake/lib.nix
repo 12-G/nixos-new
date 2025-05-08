@@ -123,7 +123,9 @@ in {
         mkLinuxSystem = {
           home-manager ? true,
           wsl ? false,
-        }: mod:
+        }: mod: let
+          isNotWSL = wsl;
+        in
           inputs.nixpkgs.lib.nixosSystem {
             # Arguments to pass to all modules.
             specialArgs = specialArgsFor.nixos;
@@ -132,11 +134,11 @@ in {
                 self.sharedModules.default
                 nixosModules.common
                 mod
-                # {
-                #   config._module.args = {
-                #     inherit isWSL;
-                #   };
-                # }
+                {
+                  config._module.args = {
+                    inherit isNotWSL;
+                  };
+                }
               ]
               ++ lib.optional home-manager nixosModules.home-manager;
           };

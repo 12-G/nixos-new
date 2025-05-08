@@ -4,7 +4,6 @@
   flake,
   config,
   pkgs,
-  isWSL,
   ...
 }: let
   inherit (flake) self;
