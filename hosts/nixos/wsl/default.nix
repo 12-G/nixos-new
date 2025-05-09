@@ -9,6 +9,8 @@
 }: let
   inherit (flake) self;
   inherit (flake) vars;
+  inherit (vars) pc;
+  isNotWSL = config.networking.hostName != "${pc.w}";
 in {
   imports = [
     ./sys_config.nix
@@ -21,7 +23,7 @@ in {
 
   # Enable home-manager for our user
   home-manager.users."${vars.username}".imports = [
-    self.homeModules.default
+    (import self.homeModules.default {inherit isNotWSL;})
     # {
     #   config._module.args = {inherit isWSL;};
     # }
